@@ -1,14 +1,28 @@
+test:
+	composer run phpunit
+
+setup: env-prepare install key
+
 install:
 	composer install
 
+analyse:
+	php artisan code:analyse
+
 lint:
-	composer run-script phpcs --
+	composer phpcs
 
-lint-fix:
-	composer run-script phpcbf --
-
-test:
-	phpunit
+fix-lint:
+	composer phpcbf
 
 run:
-	php artishan serve
+	php artisan serve
+
+deploy:
+	git push heroku master
+
+env-prepare:
+	cp -n .env.example .env || true
+
+key:
+	php artisan key:generate
