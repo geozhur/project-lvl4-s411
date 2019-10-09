@@ -1,14 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "geozhur/project-lvl4-s411",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Task Manager",
     "keywords": [
         "framework",
         "laravel"
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0"
@@ -18,7 +18,8 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.0",
+        "squizlabs/php_codesniffer": "*"
     },
     "config": {
         "optimize-autoloader": true,
@@ -56,6 +57,10 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpunit": "phpunit --colors=always",
+        "test": "phpunit tests"
     }
 }

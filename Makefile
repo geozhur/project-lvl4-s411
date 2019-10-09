@@ -12,7 +12,7 @@ analyse:
 lint:
 	composer phpcs
 
-fix-lint:
+lint-fix:
 	composer phpcbf
 
 run:
