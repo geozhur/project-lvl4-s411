@@ -6,9 +6,6 @@ setup: env-prepare install key
 install:
 	composer install
 
-analyse:
-	php artisan code:analyse
-
 lint:
 	composer phpcs
 
@@ -17,9 +14,6 @@ lint-fix:
 
 run:
 	php artisan serve
-
-deploy:
-	git push heroku master
 
 env-prepare:
 	cp -n .env.example .env || true
