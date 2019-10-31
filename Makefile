@@ -5,6 +5,7 @@ setup: env-prepare install key
 
 install:
 	composer install
+	npm install
 
 lint:
 	composer phpcs
