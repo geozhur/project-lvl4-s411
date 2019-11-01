@@ -36,8 +36,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link"
-                                href="{{ route('users.index') }}">Users</a>
+                            <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
                         </li>
                     </ul>
 
@@ -60,13 +59,13 @@
                                                     {{ Auth::user()->name }}
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('account.edit', Auth::user()->id) }}">Settings</a>
+                                            <a class="dropdown-item" href="{{ route('account.edit', Auth::user()->id) }}">{{ __('Settings') }}</a>
                                             <div class="dropdown-divider"></div>
 
                                             </div>
                                     </li>
                                     <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('logout') }}" data-method="post" rel="nofollow">Logout</a>
+                                            <a class="nav-link" href="{{ route('logout') }}" data-method="post" rel="nofollow">{{ __('Logout') }}</a>
                                     </li>
                         @endguest
                     </ul>

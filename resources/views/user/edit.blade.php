@@ -8,25 +8,25 @@
                                     Settings
                                     </div>
                                     <div class="list-group list-group-flush">
-                                        <a class="nav-link list-group-item list-group-item-action " href="/user/profile/edit">Profile</a>
-                                        <a class="nav-link list-group-item list-group-item-action" href="/user/settings/edit">Security</a>
+                                        <a class="nav-link list-group-item list-group-item-action " href="/user/profile/edit">{{ __('Profile') }}</a>
+                                        <a class="nav-link list-group-item list-group-item-action" href="/user/settings/edit">{{ __('Security') }}</a>
                                     </div>
                             </div>
                     </div>
                     <div class="col-12 col-md-9">
                     <div class="card">
-                    <div class="card-header">Settings</div>
-    
+                    <div class="card-header">{{ __('Settings') }}</div>
+
                     <div class="card-body">
                             <form method="post" action="route('users.edit', $user)">
                             @csrf
                             {{ method_field('patch') }}
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-    
+
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
-    
+
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -34,13 +34,13 @@
                                     @enderror
                                 </div>
                             </div>
-    
+
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-    
+
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
-    
+
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -48,13 +48,13 @@
                                     @enderror
                                 </div>
                             </div>
-    
+
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-    
+
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-    
+
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -62,26 +62,26 @@
                                     @enderror
                                 </div>
                             </div>
-    
+
                             <div class="form-group row">
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-    
+
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-    
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Save
+                                        {{ __('Save') }}
                                     </button>
                                 </div>
                             </div>
                         </form>
                     </div>
                     </div>
-                </div>  
+                </div>
 </div>
 
 @endsection

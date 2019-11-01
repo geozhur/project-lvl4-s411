@@ -63,7 +63,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         $this->guard()->logout();
-        flash("testtestest");
+        flash(__('passwords.verification_link_has_been'));
         return redirect()->route('welcome');
     }
 }

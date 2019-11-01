@@ -25,7 +25,7 @@ class AccountController extends Controller
         $user->name = request('name');
 
         $user->save();
-        flash('Data successfully updated')->success();
+        flash(__('account.name_updated'))->success();
         return redirect()->route('account.edit', $user->id);
     }
 
@@ -43,7 +43,7 @@ class AccountController extends Controller
             'email' => 'required|email|max:255|unique:users,id,' . $user->id,
             'password_for_change_mail' => ['required', function ($attribute, $value, $fail) use ($user) {
                 if (!\Hash::check($value, $user->password)) {
-                    return $fail(__('The current password is incorrect.'));
+                    return $fail(__('account.current_password_incorrect'));
                 }
             }]
         ]);
@@ -64,7 +64,7 @@ class AccountController extends Controller
             'new_password' => 'required|same:confirm_new_password',
             'password_for_change_password' => ['required', function ($attribute, $value, $fail) use ($user) {
                 if (!\Hash::check($value, $user->password)) {
-                    return $fail(__('The current password is incorrect.'));
+                    return $fail(__('account.current_password_incorrect'));
                 }
             }]
         ]);
@@ -72,7 +72,7 @@ class AccountController extends Controller
         $user->password = bcrypt(request('new_password'));
 
         $user->save();
-        flash('Password successfully updated')->success();
+        flash(__('account.password_updated'))->success();
         return back();
     }
 

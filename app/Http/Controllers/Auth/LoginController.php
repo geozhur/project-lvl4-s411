@@ -32,9 +32,7 @@ class LoginController extends Controller
     public function redirectPath()
     {
         // Do your logic to flash data to session...
-        flash('You are logged')->success();
-
-        // Return the results of the method we are overriding that we aliased.
+        flash(__('auth.you_are_logged'))->success();
         return $this->laravelRedirectPath();
     }
 
@@ -42,9 +40,8 @@ class LoginController extends Controller
     {
         if (!$user->hasVerifiedEmail()) {
             auth()->logout();
-            flash('You need to confirm your account. We have sent you an activation code, please check your email.');
-            return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+            flash(__('passwords.you_need_to_confirm'));
+            return back();
         }
-      //  return back();
     }
 }

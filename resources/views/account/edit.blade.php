@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Contact') }}</div>
                 <div class="card-body">
-                    {{ Form::open(array('route' => array('account.update', $user->id))) }}
+                    {{ Form::model($user, array('route' => array('account.update', $user->id))) }}
                     {{ method_field('patch') }}
                     {{ Form::textAccount(['name' => 'name', 'value' => $user->name, 'label' => __('Name')]) }}
                     {{ Form::submit('Save',['class' => 'btn btn-primary offset-md-4']) }}

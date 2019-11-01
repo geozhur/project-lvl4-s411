@@ -17,5 +17,6 @@ return [
     'sent' => 'We have e-mailed your password reset link!',
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that e-mail address.",
-
+    'verification_link_has_been' => 'A verification link has been sent to your email address.',
+    'you_need_to_confirm' => 'You need to confirm your account. We have sent you an activation code, please check your email.'
 ];

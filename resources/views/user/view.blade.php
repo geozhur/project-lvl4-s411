@@ -7,9 +7,9 @@
                     <div class="table-responsive">
                         <table class="table table-striped">
                         <tbody>
-                              <tr><td>Id:</td><td>{{$user->id}}</td></tr>
-                              <tr><td>Mail:</td><td>{{$user->email}}</td></tr>
-                              <tr><td>Create Date:</td><td>{{$user->created_at->format('d.m.Y')}}</td></tr>
+                            <tr><td>{{ __('Id') }}:</td><td>{{$user->id}}</td></tr>
+                            <tr><td>{{ __('Mail') }}:</td><td>{{$user->email}}</td></tr>
+                            <tr><td>{{ __('Create Date') }}:</td><td>{{$user->created_at->format('d.m.Y')}}</td></tr>
                         </tbody>
                         </table>
                     </div>

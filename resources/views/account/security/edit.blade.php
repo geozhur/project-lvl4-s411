@@ -5,7 +5,7 @@
             @include('account.menu')
             <div class="col-12 col-md-9">
                 <div class="card">
-                    <div class="card-header">Email change</div>
+                    <div class="card-header">{{ __('Email change') }}</div>
                     <div class="card-body">
                             {{ Form::open(array('route' => 'account.updateEmail')) }}
                             {{ method_field('patch') }}
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="card mt-3">
-                    <div class="card-header">Password change</div>
+                    <div class="card-header">{{ __('Password change') }}</div>
                     <div class="card-body">
                             {{ Form::open(array('route' => 'account.updatePassword')) }}
                             {{ method_field('patch') }}
