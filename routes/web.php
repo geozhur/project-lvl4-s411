@@ -22,9 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController')->only(['index', 'show']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
-  //  Route::redirect('/account', '/account/edit');
     Route::get('/account/security/edit', 'AccountController@editSecurity')->name('account.editSecurity');
     Route::patch('/account/password/update', 'AccountController@updatePassword')->name('account.updatePassword');
     Route::patch('/account/email/update', 'AccountController@updateEmail')->name('account.updateEmail');
     Route::resource('account', 'AccountController')->only(['edit', 'update', 'destroy']);
+    Route::resource('taskstatuses', 'TaskStatusController')->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 });

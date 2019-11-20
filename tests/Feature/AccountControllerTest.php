@@ -2,14 +2,11 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
+use Tests\TestCase;
 
 class AccountControllerTest extends TestCase
 {
-    use RefreshDatabase;
 
     public function testIndex()
     {
@@ -21,7 +18,6 @@ class AccountControllerTest extends TestCase
         $response->assertStatus(200)
             ->assertSee(e($user->name));
     }
-
 
     public function testUpdateName()
     {
@@ -37,12 +33,11 @@ class AccountControllerTest extends TestCase
         $this->assertEquals('Claus', $user2->name);
     }
 
-
     public function testUpdateEmailWhitoutPassword()
     {
 
         $data = [
-            'email' => 'test@www.ru'
+            'email' => 'test@www.ru',
         ];
 
         $user = factory(User::class)->create();
@@ -63,7 +58,7 @@ class AccountControllerTest extends TestCase
         ];
 
         $user = factory(User::class)->create([
-            'password' => \Hash::make($data['password_for_change_mail'])
+            'password' => \Hash::make($data['password_for_change_mail']),
         ]);
         $this->actingAs($user);
 
@@ -83,7 +78,7 @@ class AccountControllerTest extends TestCase
         ];
 
         $user = factory(User::class)->create([
-            'password' => \Hash::make($data['password_for_change_password'])
+            'password' => \Hash::make($data['password_for_change_password']),
         ]);
         $this->actingAs($user);
 
