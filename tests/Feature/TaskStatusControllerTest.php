@@ -52,7 +52,7 @@ class TaskStatusControllerTest extends TestCase
     public function testDestroyTaskStatus()
     {
         $status = factory(TaskStatus::class)->create();
-        $response = $this->delete(route('taskstatuses.destroy',  $status->id));
+        $response = $this->delete(route('taskstatuses.destroy', $status->id));
         $response->assertStatus(302);
         $status2 = TaskStatus::find($status->id);
         $this->assertNull($status2);
