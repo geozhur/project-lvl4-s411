@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     //
+    protected $fillable = [
+        'name',
+    ];
+
     public function creater()
     {
         return $this->belongsTo(User::class);

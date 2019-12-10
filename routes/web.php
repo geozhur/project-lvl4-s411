@@ -27,4 +27,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/account/email/update', 'AccountController@updateEmail')->name('account.updateEmail');
     Route::resource('account', 'AccountController')->only(['edit', 'update', 'destroy']);
     Route::resource('taskstatuses', 'TaskStatusController')->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('tasks', 'TaskController');
 });

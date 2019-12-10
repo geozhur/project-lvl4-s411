@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -14,7 +15,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::paginate();
+        return view('task.index', compact('tasks'));
     }
 
     /**
@@ -24,7 +26,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        $executors = User::orderBy('name')->pluck('name', 'id');
+        return view('task.create', compact('executors'));
     }
 
     /**
