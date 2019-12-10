@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('jquery-ujs');
+require('select2/dist/js/select2');
 
 window.Vue = require('vue');
 
@@ -33,3 +34,8 @@ const app = new Vue({
 });
 
 $('#flash-overlay-modal').modal();
+
+$(".select2").select2({
+    tags: true
+});
+

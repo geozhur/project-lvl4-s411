@@ -11,6 +11,7 @@
                     <tr>
                         <td>{{ __('ID') }}</td>
                         <td>{{ __('Name') }}</td>
+                        <td>{{ __('Tags') }}</td>
                         <td>{{ __('Action') }}</td>
                     </tr>
                 </thead>
@@ -18,10 +19,15 @@
                     @foreach($tasks as $task)
                     <tr>
                         <td>{{$task->id}}</td>
-                        <td><a href="{{ route('task.edit', $task->id) }}">{{$task->name}}</a></td>
+                        <td><a href="{{ route('tasks.edit', $task->id) }}">{{$task->name}}</a></td>
                         <td>
-                            <a class="btn btn-success btn-sm" href="{{ route('task', $task->id) }}">Edit</a>
-                            <a href="{{ route('task.destroy', $task->id) }}"
+                            @foreach ($task->tag as $singleTag)
+                            <a href="#" class="badge badge-primary">{{ $singleTag->name }}</a>
+                            @endforeach
+                        </td>
+                        <td>
+                            <a class="btn btn-success btn-sm" href="{{ route('tasks.edit', $task->id) }}">Edit</a>
+                            <a href="{{ route('tasks.destroy', $task->id) }}"
                                 class="btn btn-danger btn-sm"
                                     data-method="delete"
                                     data-confirm="{{ __('task.are_you_sure_task') }}">

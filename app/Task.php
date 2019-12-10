@@ -9,6 +9,9 @@ class Task extends Model
     //
     protected $fillable = [
         'name',
+        'description',
+        'status_id',
+        'assignedto_id'
     ];
 
     public function creater()

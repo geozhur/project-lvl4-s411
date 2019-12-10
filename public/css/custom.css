@@ -1,2 +1,15 @@
+.select2-container {
+    position: relative;
+    z-index: 2;
+    float: left;
+    margin-bottom: 0;
+    display: table;
+    table-layout: fixed;
+    color: black;
+    background-color: aliceblue;
+}
 
-   
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    color:black;
+  }
+

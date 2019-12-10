@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\TaskStatus;
 use App\User;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -27,7 +29,9 @@ class TaskController extends Controller
     public function create()
     {
         $executors = User::orderBy('name')->pluck('name', 'id');
-        return view('task.create', compact('executors'));
+        $statuses = TaskStatus::orderBy('id')->pluck('name', 'id');
+        $tags = \App\Tag::get()->pluck('name', 'id');
+        return view('task.create', compact('executors', 'statuses', 'tags'));
     }
 
     /**
@@ -38,7 +42,23 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task();
+        $task->name = $request->get('name');
+        $task->description = $request->get('description');
+        $task->assignedto_id = $request->get('executor');
+        //User::find($request->get('executor'))->id;
+        $task->creator_id = \Auth::user()->id;
+        $task->save();
+
+        $tagsNames = $request->get('tag');
+        foreach ($tagsNames as $tagName) {
+            Tag::firstOrCreate(['name' => $tagName])->save();
+        }
+
+        $tags = Tag::whereIn('name', $tagsNames)->get()->pluck('id');
+        $task->tag()->sync($tags);
+
+        return redirect()->route('tasks.index');
     }
 
     /**
