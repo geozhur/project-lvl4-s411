@@ -46,7 +46,6 @@ class TaskController extends Controller
         $task->name = $request->get('name');
         $task->description = $request->get('description');
         $task->assignedto_id = $request->get('executor');
-        //User::find($request->get('executor'))->id;
         $task->creator_id = \Auth::user()->id;
         $task->save();
 
@@ -103,6 +102,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        flash(__('task.deleted'))->success();
+        return redirect()->route('tasks.index');
     }
 }
