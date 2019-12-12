@@ -11,6 +11,8 @@
                     <tr>
                         <td>{{ __('ID') }}</td>
                         <td>{{ __('Name') }}</td>
+                        <td>{{ __('Status') }}</td>
+                        <td>{{ __('Assigned to') }}</td>
                         <td>{{ __('Tags') }}</td>
                         <td>{{ __('Action') }}</td>
                     </tr>
@@ -20,6 +22,8 @@
                     <tr>
                         <td>{{$task->id}}</td>
                         <td><a href="{{ route('tasks.edit', $task->id) }}">{{$task->name}}</a></td>
+                        <td>{{$task->status->name}}</td>
+                        <td>{{$task->assignedto->getName()}}</td>
                         <td>
                             @foreach ($task->tag as $singleTag)
                             <a href="#" class="badge badge-primary">{{ $singleTag->name }}</a>

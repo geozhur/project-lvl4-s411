@@ -6,6 +6,7 @@ use App\Task;
 use App\TaskStatus;
 use App\User;
 use App\Tag;
+use App\Auth;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -30,7 +31,7 @@ class TaskController extends Controller
     {
         $executors = User::orderBy('name')->pluck('name', 'id');
         $statuses = TaskStatus::orderBy('id')->pluck('name', 'id');
-        $tags = \App\Tag::get()->pluck('name', 'id');
+        $tags = Tag::get()->pluck('name', 'id');
         return view('task.create', compact('executors', 'statuses', 'tags'));
     }
 
@@ -45,8 +46,9 @@ class TaskController extends Controller
         $task = new Task();
         $task->name = $request->get('name');
         $task->description = $request->get('description');
-        $task->assignedto_id = $request->get('executor');
-        $task->creator_id = \Auth::user()->id;
+        $executor = User::find($request->get('executor'));
+        $task->assignedto()->associate($executor);
+        $task->creator()->associate(Auth::user());
         $task->save();
 
         $tagsNames = $request->get('tag');
@@ -68,7 +70,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $tasks = Task::paginate();
+        return view('task.index', compact('tasks', 'users'));
     }
 
     /**
