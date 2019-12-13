@@ -55830,7 +55830,8 @@ var app = new Vue({
 });
 $('#flash-overlay-modal').modal();
 $(".select2").select2({
-  tags: true
+  tags: true,
+  tokenSeparators: [","]
 });
 
 /***/ }),

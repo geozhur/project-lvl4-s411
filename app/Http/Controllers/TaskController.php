@@ -6,7 +6,7 @@ use App\Task;
 use App\TaskStatus;
 use App\User;
 use App\Tag;
-use App\Auth;
+use Auth;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -18,7 +18,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::paginate();
+        $tasks = Task::orderBy('id', 'desc')->paginate();
         return view('task.index', compact('tasks'));
     }
 
@@ -31,7 +31,7 @@ class TaskController extends Controller
     {
         $executors = User::orderBy('name')->pluck('name', 'id');
         $statuses = TaskStatus::orderBy('id')->pluck('name', 'id');
-        $tags = Tag::get()->pluck('name', 'id');
+        $tags = Tag::get()->pluck('name', 'name');
         return view('task.create', compact('executors', 'statuses', 'tags'));
     }
 
@@ -51,12 +51,17 @@ class TaskController extends Controller
         $task->creator()->associate(Auth::user());
         $task->save();
 
-        $tagsNames = $request->get('tag');
+        $tagsNames = $request->input('tag');
+        $tags = [];
+        print_r((array)$request->input('tag'));
+
         foreach ($tagsNames as $tagName) {
-            Tag::firstOrCreate(['name' => $tagName])->save();
+                $newTag = Tag::firstOrCreate(['name' => $tagName]);
+                $newTag->save();
+                $tags[] = $newTag->id;
         }
 
-        $tags = Tag::whereIn('name', $tagsNames)->get()->pluck('id');
+        //$tags = Tag::whereIn('name', $tagsNames)->get()->pluck('id');
         $task->tag()->sync($tags);
 
         return redirect()->route('tasks.index');
