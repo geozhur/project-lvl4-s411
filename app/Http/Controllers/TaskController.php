@@ -44,26 +44,22 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $task = new Task();
-        $task->name = $request->get('name');
-        $task->description = $request->get('description');
-        $executor = User::find($request->get('executor'));
+        $task->name = $request->input('name');
+        $task->description = $request->input('description');
+        $executor = User::find($request->input('executor'));
         $task->assignedto()->associate($executor);
         $task->creator()->associate(Auth::user());
         $task->save();
 
         $tagsNames = $request->input('tag');
         $tags = [];
-        print_r((array)$request->input('tag'));
-
         foreach ($tagsNames as $tagName) {
-                $newTag = Tag::firstOrCreate(['name' => $tagName]);
-                $newTag->save();
-                $tags[] = $newTag->id;
+            $newTag = Tag::firstOrCreate(['name' => $tagName]);
+            $newTag->save();
+            $tags[] = $newTag->id;
         }
 
-        //$tags = Tag::whereIn('name', $tagsNames)->get()->pluck('id');
         $task->tag()->sync($tags);
-
         return redirect()->route('tasks.index');
     }
 
@@ -75,8 +71,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        $tasks = Task::paginate();
-        return view('task.index', compact('tasks', 'users'));
+        return view('task.show', compact('task'));
     }
 
     /**
