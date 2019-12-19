@@ -6,6 +6,7 @@ use App\Task;
 use App\TaskStatus;
 use App\User;
 use App\Tag;
+use App\TaskFilter;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,9 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, TaskFilter $filters)
     {
-        $tasks = Task::orderBy('id', 'desc')->paginate();
+        $tasks = Task::filter($filters)->orderBy('id', 'desc')->paginate();
         return view('task.index', compact('tasks'));
     }
 
@@ -46,8 +47,10 @@ class TaskController extends Controller
         $task = new Task();
         $task->name = $request->input('name');
         $task->description = $request->input('description');
-        $executor = User::find($request->input('executor'));
+        $executor = User::find($request->input('assignedto_id'));
         $task->assignedto()->associate($executor);
+        $status = TaskStatus::find($request->input('status_id'));
+        $task->status()->associate($status);
         $task->creator()->associate(Auth::user());
         $task->save();
 
@@ -82,7 +85,10 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        $executors = User::orderBy('name')->pluck('name', 'id');
+        $statuses = TaskStatus::orderBy('id')->pluck('name', 'id');
+        $tags = Tag::get()->pluck('name', 'name');
+        return view('task.edit', compact('task', 'executors', 'statuses', 'tags'));
     }
 
     /**
@@ -94,7 +100,28 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $task->name = $request->input('name');
+        $task->description = $request->input('description');
+        $executor = User::find($request->input('assignedto_id'));
+        $task->assignedto()->associate($executor);
+        $status = TaskStatus::find($request->input('status_id'));
+        $task->status()->associate($status);
+        $task->creator()->associate(Auth::user());
+        $task->save();
+
+        $tagsNames = $request->input('tag');
+        $tags = [];
+        if (isset($tagsNames)) {
+            foreach ($tagsNames as $tagName) {
+                $newTag = Tag::firstOrCreate(['name' => $tagName]);
+                $newTag->save();
+                $tags[] = $newTag->id;
+            }
+        }
+
+
+        $task->tag()->sync($tags);
+        return redirect()->route('tasks.index');
     }
 
     /**
