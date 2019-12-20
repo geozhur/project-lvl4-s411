@@ -12,6 +12,7 @@ use App\User;
 class TaskControllerTest extends TestCase
 {
     use WithFaker;
+
     private $user;
 
     protected function setUp(): void

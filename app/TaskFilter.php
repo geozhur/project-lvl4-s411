@@ -1,5 +1,7 @@
 <?php
+
 namespace App;
+
 class TaskFilter extends QueryFilter
 {
     public function status($value)
@@ -9,7 +11,7 @@ class TaskFilter extends QueryFilter
 
     public function tag($value)
     {
-        $this->builder->whereHas('tag', function ($q) use ($value){
+        $this->builder->whereHas('tag', function ($q) use ($value) {
             $q->where('name', '=', $value);
         });
     }
