@@ -20,10 +20,11 @@ class CreateTasksTable extends Migration
             $table->text('description')->nullable();
             $table->integer('status_id')->unsigned()->default('1');
             $table->integer('creator_id')->unsigned();
-            $table->integer('assignedto_id')->unsigned()->nullable();
+            $table->integer('assigned_to_id')->unsigned()->nullable();
+
             $table->foreign('creator_id')->references('id')->on('users');
             $table->foreign('status_id')->references('id')->on('task_statuses');
-            $table->foreign('assignedto_id')->references('id')->on('users');
+            $table->foreign('assigned_to_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

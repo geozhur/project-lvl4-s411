@@ -12,15 +12,15 @@
                     <div class="col-md-6">
                     {{ Form::text('name', $task->name,['class' => 'form-control']) }}
                     </div>
-                    @error('name')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
+                    @error('name')<span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>@enderror
                 </div>
 
                 <div class="form-group row">
                 {{ Form::label('executor', 'Executor:',['class' => 'col-md-4 col-form-label text-md-right']) }}
                     <div class="col-md-6">
-                    {{ Form::select('assignedto_id', $executors, $task->assignedto->id, ['class' => 'form-control']) }}
+                    {{ Form::select('assigned_to_id', $executors, $task->assignedto->id, ['class' => 'form-control']) }}
                     </div>
-                    @error('executor')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
+                    @error('assigned_to_id')<span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>@enderror
                 </div>
 
                 <div class="form-group row">
@@ -28,7 +28,7 @@
                     <div class="col-md-6">
                     {{ Form::textarea('description', $task->description, ['class' => 'form-control', 'id' => 'description']) }}
                     </div>
-                    @error('description')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
+                    @error('description')<span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>@enderror
                 </div>
 
                 <div class="form-group row">
@@ -36,15 +36,15 @@
                     <div class="col-md-6">
                     {{ Form::select('status_id', $statuses, $task->status->id, ['class' => 'form-control']) }}
                     </div>
-                    @error('status')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
+                    @error('status_id')<span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>@enderror
                 </div>
 
                 <div class="form-group row">
-                    {{ Form::label('tag', 'Tags:',['class' => 'col-md-4 col-form-label text-md-right']) }}
+                    {{ Form::label('tags', 'Tags:',['class' => 'col-md-4 col-form-label text-md-right']) }}
                     <div class="col-md-6">
-                    {{ Form::select('tag[]', $tags, $task->tag->pluck('name', 'name'), ['class' => 'select2 form-control select2-multiple', 'multiple' => 'multiple']) }}
+                    {{ Form::select('tags[]', $tags, $task->tag->pluck('name', 'name'), ['class' => 'select2 form-control select2-multiple', 'multiple' => 'multiple']) }}
                     </div>
-                    @error('tag')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
+                    @error('tags')<span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>@enderror
                 </div>
                 {{ Form::submit('Save',['class' => 'btn btn-primary offset-md-4']) }}
                 {{ Form::close() }}
