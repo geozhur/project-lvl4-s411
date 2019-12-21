@@ -17,9 +17,9 @@ class TaskController extends Controller
     public function index(Request $request, TaskFilter $filters)
     {
         $tasks = Task::filter($filters)->orderBy('id', 'desc')->paginate();
-        $users = User::has('taskAssignedTo')->get();
-        $tags = Tag::has('task')->get();
-        $statuses = TaskStatus::has('task')->get();
+        $users = User::has('taskAssignedTo')->orderBy('name')->pluck('name', 'id');
+        $tags = Tag::has('task')->get()->pluck('name', 'name');
+        $statuses = TaskStatus::has('task')->latest()->pluck('name', 'id');
         return view('task.index', compact('tasks', 'users', 'tags', 'statuses'));
     }
 

@@ -15,6 +15,11 @@ class TaskFilter extends QueryFilter
             $q->where('name', '=', $value);
         });
     }
+
+    public function assignedto($value)
+    {
+        $this->builder->where('assigned_to_id', '=', $value);
+    }
     /*
     public function birthday($value)
     {
