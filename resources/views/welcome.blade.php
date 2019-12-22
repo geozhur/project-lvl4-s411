@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Project Task manager</h2>
-    <p>Design. Normalization (and denormalization) of the database, relationships between entities. ORM. Heroku (PaaS). The tracking errors in production with the Rollbar. Laravel Framework.</p>
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="img/tasklogo.svg" alt="" width="144" height="144">
+        <h2>Project Task Management</h2>
+        <p class="text-left">
+            <p>Diploma project puts a fat point in learning. The purpose of this project is to develop web developer application tools. Frameworks, databases, ORMS, it will all be here.</p>
+        </p>
+    </div>
 @endsection
