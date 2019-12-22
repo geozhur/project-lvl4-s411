@@ -37,35 +37,34 @@
                 <div class="collapse navbar-collapse mr-auto" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <nav class="my-2 my-md-0 navbar-nav mr-auto">
-                            <a class="p-2 text-dark" href="{{ route('users.index') }}"><i class="mr-1 fa fa-users"></i> {{ __('Users') }}</a>
-                            <a class="p-2 text-dark" href="{{ route('tasks.index') }}"><i class="mr-1 fa fa-tasks"></i>{{ __('Tasks') }}</a>
+                        <a class="p-2 text-dark" href="{{ route('users.index') }}"><i class="mr-1 fa fa-users"></i> {{ __('Users') }}</a>
+                        <a class="p-2 text-dark" href="{{ route('tasks.index') }}"><i class="mr-1 fa fa-tasks"></i>{{ __('Tasks') }}</a>
                     </nav>
                     @guest
-                    <a class="btn btn-outline-primary" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    @if (Route::has('register'))
-                    <a class="btn btn-outline-primary ml-2" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    @endif @else
-                        <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
+                    <a class="btn btn-outline-primary" href="{{ route('login') }}">{{ __('Login') }}</a> @if (Route::has('register'))
+                    <a class="btn btn-outline-primary ml-2" href="{{ route('register') }}">{{ __('Register') }}</a> @endif
+                    @else
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                                                     {{ Auth::user()->name }}
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('account.edit', Auth::user()->id) }}">{{ __('Settings') }}</a>
-                                <div class="dropdown-divider"></div>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('account.edit', Auth::user()->id) }}">{{ __('Settings') }}</a>
+                            <div class="dropdown-divider"></div>
 
-                            </div>
                         </div>
-                        <div class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}" data-method="post" rel="nofollow">{{ __('Logout') }}</a>
-                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}" data-method="post" rel="nofollow">{{ __('Logout') }}</a>
+                    </div>
                     @endguest
                     <!-- Right Side Of Navbar -->
 
                 </div>
             </div>
         </nav>
-        @include('flash::message')
+    @include('flash::message')
         <main class="my-5">
             <div class="container mb-3">
                 @yield('content')
@@ -81,30 +80,25 @@
                     <div class="col-6 col-md">
                         <h5>Features</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Cool stuff</a></li>
-                            <li><a class="text-muted" href="#">Random feature</a></li>
-                            <li><a class="text-muted" href="#">Team feature</a></li>
-                            <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                            <li><a class="text-muted" href="#">Another one</a></li>
-                            <li><a class="text-muted" href="#">Last time</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-md">
-                        <h5>Resources</h5>
-                        <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Resource</a></li>
-                            <li><a class="text-muted" href="#">Resource name</a></li>
-                            <li><a class="text-muted" href="#">Another resource</a></li>
-                            <li><a class="text-muted" href="#">Final resource</a></li>
+                            <li><a class="text-muted" href="/privacy-policy/">Privacy policy</a></li>
+                            <li><a class="text-muted" href="/ip-policy/">IP policy</a></li>
+                            <li><a class="text-muted" href="/cookie-policy/">Cookie policy</a></li>
+                            <li><a class="text-muted" href="/terms-of-use/">Terms of use</a></li>
+                            <li><a class="text-muted" href="/about/jobs/">Jobs</a></li>
+                            <li><a class="text-muted" href="/contact/">Contact</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md">
                         <h5>About</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Team</a></li>
-                            <li><a class="text-muted" href="#">Locations</a></li>
-                            <li><a class="text-muted" href="#">Privacy</a></li>
-                            <li><a class="text-muted" href="#">Terms</a></li>
+                            <li><a class="text-muted" href="https://github.com/geozhur/project-lvl4-s411.git" title="Site source code">
+                                <i class="fa fa-code fa-lg fa-fw"></i> available under the MIT license.</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>Resources</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="https://hexlet.io/">Hexlet</a></li>
                         </ul>
                     </div>
                 </div>
