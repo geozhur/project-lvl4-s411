@@ -21,6 +21,5 @@ class TaskTableSeeder extends Seeder
                 $tags ->random(rand(1, 10))
             );
         });
-
     }
 }
