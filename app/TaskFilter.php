@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Auth;
+
 class TaskFilter extends QueryFilter
 {
     public function status($value)
@@ -20,16 +22,9 @@ class TaskFilter extends QueryFilter
     {
         $this->builder->where('assigned_to_id', '=', $value);
     }
-    /*
-    public function birthday($value)
+
+    public function mytasks($value)
     {
-        if (! $value) return;
-        $this->builder->whereHas('info', function ($query) use ($value) {
-            $query->where('birthday', '>', $value);
-        });
+        $this->builder->where('creator_id', '=', Auth::user()->id);
     }
-    public function gender($value)
-    {
-        $this->builder->where('gender', $value);
-    }*/
 }
