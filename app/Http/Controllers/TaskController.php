@@ -37,6 +37,7 @@ class TaskController extends Controller
         $task->creator()->associate(Auth::user());
         $task->save();
         $task->syncTags($request->input('tags'));
+        flash(__('task.task_added'))->success();
         return redirect()->route('tasks.index');
     }
 
@@ -58,13 +59,14 @@ class TaskController extends Controller
         $input = $request->validated();
         $task->fill($input)->save();
         $task->syncTags($request->input('tags'));
+        flash(__('task.task_updated'))->success();
         return redirect()->route('tasks.index');
     }
 
     public function destroy(Task $task)
     {
         $task->delete();
-        flash(__('task.deleted'))->success();
+        flash(__('task.task_deleted'))->success();
         return redirect()->route('tasks.index');
     }
 }

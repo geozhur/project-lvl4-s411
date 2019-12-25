@@ -29,7 +29,7 @@ class StoreTask extends FormRequest
             'status_id'        => 'required|exists:task_statuses,id',
             'assigned_to_id'    => 'required|exists:users,id',
             "tags"    => "array",
-            "tags.*"  => "required|string|min:3",
+            "tags.*"  => "required|string|min:2",
         ];
     }
 }
