@@ -13,7 +13,7 @@ class AccountEmailController extends Controller
         $user = Auth::user();
 
         $this->validate(request(), [
-            'email' => 'required|email|max:255|unique:users,id,' . $user->id,
+            'email' => 'required|email|max:255|unique:users,email,'.$user->id.',id',
             'password_for_change_mail' => ['required', function ($attribute, $value, $fail) use ($user) {
                 if (!\Hash::check($value, $user->password)) {
                     return $fail(__('account.current_password_incorrect'));
