@@ -8,7 +8,7 @@ use Auth;
 
 class AccountEmailController extends Controller
 {
-    public function update(Request $request, User $user)
+    public function update(User $user)
     {
         $user = Auth::user();
 
