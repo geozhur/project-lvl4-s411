@@ -8,7 +8,7 @@ use Auth;
 
 class AccountEmailController extends Controller
 {
-    public function update(User $user)
+    public function update(Request $request, User $user)
     {
         $user = Auth::user();
 
@@ -21,7 +21,7 @@ class AccountEmailController extends Controller
             }]
         ]);
 
-        $user->email = request('email');
+        $user->email = $request->input('email');
 
         $user->save();
         flash('Email successfully updated')->success();
