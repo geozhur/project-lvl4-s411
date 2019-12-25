@@ -2,14 +2,14 @@
 @section('content')
 <div class="row my-4">
     <div class="col-sm-12 my-4">
-        <h3>Users</h3>
+        <h3>{{ __('user.users') }}</h3>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <td>{{ __('ID') }}</td>
-                        <td>{{ __('Name') }}</td>
-                        <td>{{ __('Email') }}</td>
+                        <td>{{ __('user.id') }}</td>
+                        <td>{{ __('user.name') }}</td>
+                        <td>{{ __('user.email') }}</td>
                     </tr>
                 </thead>
                 <tbody>
