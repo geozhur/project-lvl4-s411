@@ -50,7 +50,7 @@
                             {{ Auth::user()->name }}
                             </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('account.edit', Auth::user()->id) }}">{{ __('app.settings') }}</a>
+                            <a class="dropdown-item" href="{{ route('account.password.edit', Auth::user()->id) }}">{{ __('app.settings') }}</a>
                             <div class="dropdown-divider"></div>
 
                         </div>

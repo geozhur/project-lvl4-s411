@@ -5,7 +5,7 @@
                 </div>
                 <div class="list-group list-group-flush">
                     <a class="nav-link list-group-item list-group-item-action {{ (\Request::route()->getName() == 'account.edit') ? 'active' : '' }}" href="{{ route('account.edit', $user->id) }}">{{ __('account.contact') }}</a>
-                    <a class="nav-link list-group-item list-group-item-action {{ (\Request::route()->getName() == 'account.editSecurity')  ? 'active' : '' }}" href="{{ route('account.editSecurity') }}">{{ __('account.security') }}</a>
+                    <a class="nav-link list-group-item list-group-item-action {{ (\Request::route()->getName() == 'account.password.edit')  ? 'active' : '' }}" href="{{ route('account.password.edit', $user->id) }}">{{ __('account.security') }}</a>
                 </div>
         </div>
 </div>

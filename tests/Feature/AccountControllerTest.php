@@ -44,7 +44,7 @@ class AccountControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $this->patch(route('account.updateEmail', $user->id), $data);
+        $this->patch(route('account.email.update', $user->id), $data);
         $user2 = User::find($user->id);
         $this->assertNotEquals($data['email'], $user2->email);
     }
@@ -62,7 +62,7 @@ class AccountControllerTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $this->patch(route('account.updateEmail', $user->id), $data);
+        $this->patch(route('account.email.update', $user->id), $data);
 
         $user2 = User::find($user->id);
         $this->assertEquals($data['email'], $user2->email);
@@ -82,7 +82,7 @@ class AccountControllerTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $this->patch(route('account.updatePassword', $user->id), $data);
+        $this->patch(route('account.password.update', $user->id), $data);
 
         $user->refresh();
         $this->assertFalse(\Hash::check($data['password_for_change_password'], $user->password));
