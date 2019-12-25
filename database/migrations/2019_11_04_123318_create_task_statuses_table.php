@@ -19,10 +19,8 @@ class CreateTaskStatusesTable extends Migration
             $table->timestamps();
         });
 
-
-        Artisan::call('db:seed', [
-            '--class' => TaskStatusesTableSeeder::class
-        ]);
+        $seeder = new TaskStatusesTableSeeder();
+        $seeder->run();
     }
 
     /**
