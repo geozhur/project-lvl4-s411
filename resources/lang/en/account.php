@@ -21,4 +21,5 @@ return [
     'name' => 'Name',
     'contact' => 'Contact',
     'security' => 'Security',
+    'user_not_deleted' => 'User cannot be deleted, he has tasks !!!',
 ];
