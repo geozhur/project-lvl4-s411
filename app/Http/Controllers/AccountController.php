@@ -79,12 +79,12 @@ class AccountController extends Controller
     public function destroy(User $user)
     {
         $user = Auth::user();
-        if ($user->taskCreator()->count() === 0 || $user->taskAssignedTo()->count() === 0) {
+        if ($user->taskCreator()->count() === 0 && $user->taskAssignedTo()->count() === 0) {
             $user->delete();
             flash(__('account.your_account_deleted'))->success();
         } else {
             flash(__('account.user_not_deleted'))->warning();
         };
-        return redirect()->route('welcome');
+        return back();
     }
 }
