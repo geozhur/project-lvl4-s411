@@ -11,7 +11,7 @@ class AccountPasswordController extends Controller
     public function edit(User $user)
     {
         $user = Auth::user();
-        return view('account.security.edit', compact('user'));
+        return view('account.password.edit', compact('user'));
     }
 
     public function update(User $user)
