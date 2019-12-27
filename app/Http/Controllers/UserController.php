@@ -11,7 +11,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::paginate(15);
+        $users = User::orderBy('id')->paginate(15);
         return view('user.index', compact('users'));
     }
 
@@ -55,8 +55,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $user = Auth::user();
-        return view('user.edit', compact('user'));
+//
     }
 
     /**
