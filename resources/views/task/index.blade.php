@@ -5,6 +5,7 @@
         <h3>{{ __('task.tasks') }}</h3>
         <hr/>
         <a class="btn btn-primary" href="{{ route('tasks.create') }}" style="margin-bottom: 15px;"><i class="mr-2 fa fa-plus"></i>{{ __('task.create_new') }}</a>
+        <a class="btn btn-outline-secondary" href="{{ route('taskstatuses.index') }}" style="margin-bottom: 15px;"><i class="mr-2 fa fa-cog"></i>{{ __('task.edit_statuses') }}</a>
         <div class="table-responsive">
             {{ Form::open(['route' => ['tasks.index'],'method' => 'get']) }}
             <table class="table table-striped table-sm">

@@ -51,4 +51,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->name;
     }
+
+    public function hasCreator()
+    {
+        return $this->taskCreator()->count() === 0;
+    }
+
+    public function hasAssignedTo()
+    {
+        return $this->taskAssignedTo()->count() === 0;
+    }
+
 }
