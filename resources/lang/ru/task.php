@@ -7,7 +7,7 @@ return [
     'are_you_sure_task' => 'Are you sure you want to delete task ?',
     'status_deleted' => 'Your status has been successfully deleted !!!',
     'task_deleted' => 'Your task has been successfully deleted !!!',
-    'task_added' => 'Task added',
+    'task_added' => 'Задача добавлена',
     'task_updated' => 'Task successfully updated',
     'status_not_deleted' => 'Status cannot be deleted !!!',
     'name_updated' => 'Name successfully updated',
