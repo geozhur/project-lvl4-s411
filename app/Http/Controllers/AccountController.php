@@ -79,7 +79,7 @@ class AccountController extends Controller
     public function destroy(User $user)
     {
         $user = Auth::user();
-        if ($user->hasCreator() && $user->hasAssignedTo()) {
+        if (!$user->hasCreator() && !$user->hasAssignedTo()) {
             $user->delete();
             flash(__('account.your_account_deleted'))->success();
         } else {

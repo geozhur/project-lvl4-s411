@@ -72,10 +72,17 @@
         </main>
         <footer class="border-top footer fixed-bottom pt-3">
             <div class="container">
-                <div class="row">
+                    <div class="row">
                     <div class="col-12 col-md">
                         <img class="mb-2" src="/img/tasklogo.svg" alt="" width="24" height="24">
-                        <small class="d-block mb-3 text-muted">&copy; 2019-2022</small>
+                        <ul class="list-unstyled text-small">
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li><a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                    {{ $properties['native'] }}
+                            </a></li>
+                            @endforeach
+                            <li><small class="d-block mb-3 text-muted">&copy; 2019-2022</small></li>
+                        </ul>
                     </div>
                     <div class="col-6 col-md">
                         <h5>{{ __('app.features') }}</h5>

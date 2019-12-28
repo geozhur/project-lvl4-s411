@@ -10,13 +10,14 @@
     "require": {
         "php": "^7.3",
         "fideloper/proxy": "^4.0",
+        "fzaninotto/faker": "^1.4",
         "laracasts/flash": "^3.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.1",
         "laravelcollective/html": "^6.0",
-        "rollbar/rollbar-laravel": "^5.0",
-        "fzaninotto/faker": "^1.4"
+        "mcamara/laravel-localization": "^1.4",
+        "rollbar/rollbar-laravel": "^5.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
