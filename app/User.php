@@ -54,11 +54,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasCreator()
     {
-        return $this->taskCreator()->count() > 0;
+        return $this->taskCreator()->exists();
     }
 
     public function hasAssignedTo()
     {
-        return $this->taskAssignedTo()->count() > 0;
+        return $this->taskAssignedTo()->exists();
     }
 }
