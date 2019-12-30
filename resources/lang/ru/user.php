@@ -1,8 +1,8 @@
 <?php
 return [
     'id' => 'Id',
-    'name' => 'Name',
-    'email' => 'Email',
-    'users' => 'Users',
-    'create_date' => 'Create Date',
+    'name' => 'Имя',
+    'email' => 'E-mail',
+    'users' => 'Пользователи',
+    'create_date' => 'Дата создания',
 ];

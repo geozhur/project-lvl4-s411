@@ -75,14 +75,14 @@
                     <div class="row">
                     <div class="col-12 col-md">
                         <img class="mb-2" src="/img/tasklogo.svg" alt="" width="24" height="24">
-                        <ul class="list-unstyled text-small">
+                        <ul class="list-unstyled text-small mt-2">
                             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <li><a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            <li><span class="flag-icon flag-icon-{{ $localeCode === 'en' ? 'us': $localeCode}} "></span><a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                                     {{ $properties['native'] }}
                             </a></li>
                             @endforeach
-                            <li><small class="d-block mb-3 text-muted">&copy; 2019-2022</small></li>
                         </ul>
+                        <small class="d-block mb-3 text-muted">&copy; 2019-2022</small></li>
                     </div>
                     <div class="col-6 col-md">
                         <h5>{{ __('app.features') }}</h5>
