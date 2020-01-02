@@ -60,15 +60,14 @@ class TaskStatusController extends Controller
             'name' => 'required|min:2|max:255|unique:task_statuses,name',
         ]);
 
-        $taskstatus->name = $request->name;
-        $taskstatus->save();
+        $taskstatus->fill($request->all())->save();
         flash(__('task.name_updated'))->success();
         return redirect()->route('taskstatuses.index');
     }
 
     public function destroy(TaskStatus $taskstatus)
     {
-        if ($taskstatus->task()->count() === 0 && $taskstatus->id != 1) {
+        if (!$taskstatus->hasTask() && $taskstatus->id != TaskStatus::DEFAULT_ID) {
             $taskstatus->delete();
             flash(__('task.status_deleted'))->success();
         } else {
